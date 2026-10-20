@@ -17,8 +17,8 @@ GPL-3.0-or-later as stated above.
 Terminus (https://github.com/usetrmnl/terminus, MIT, Copyright TRMNL) is the
 server this integration talks to. No Terminus code is included.
 
-The brand images in brand/ use the "battery-high" icon of Material Design
-Icons by Pictogrammers
+The brand images in custom_components/trmnl_terminus/brand/ use the
+"battery-high" icon of Material Design Icons by Pictogrammers
 (https://pictogrammers.com/library/mdi/), distributed under the Pictogrammers
 Free License / Apache License 2.0.
 
