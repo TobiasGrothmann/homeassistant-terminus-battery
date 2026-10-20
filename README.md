@@ -18,7 +18,8 @@
 
 **Requirements:** Home Assistant 2026.10+, a reachable Terminus, and its login (email + password).
 
-**HACS:** Integrations → ⋮ → *Custom repositories* → paste this repo URL, category *Integration* → install → restart.
+**HACS:** Integrations → ⋮ → *Custom repositories* → paste
+`https://github.com/TobiasGrothmann/homeassistant-terminus-battery`, category *Integration* → install → restart.
 
 **Manual:** copy `custom_components/trmnl_terminus` into your `custom_components` folder → restart.
 

@@ -1,5 +1,5 @@
 [project]
-name = "trmnl-terminus-homeassistant"
+name = "homeassistant-terminus-battery"
 version = "0.1.0"
 description = "Home Assistant integration for TRMNL devices served by a self-hosted Terminus (BYOS) server"
 license = "GPL-3.0-or-later"

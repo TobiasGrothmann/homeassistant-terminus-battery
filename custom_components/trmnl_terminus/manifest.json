@@ -1,12 +1,12 @@
 {
   "domain": "trmnl_terminus",
   "name": "TRMNL Terminus (BYOS)",
-  "codeowners": [],
+  "codeowners": ["@TobiasGrothmann"],
   "config_flow": true,
-  "documentation": "https://github.com/CHANGEME/trmnl-terminus-homeassistant",
+  "documentation": "https://github.com/TobiasGrothmann/homeassistant-terminus-battery",
   "integration_type": "hub",
   "iot_class": "local_polling",
-  "issue_tracker": "https://github.com/CHANGEME/trmnl-terminus-homeassistant/issues",
+  "issue_tracker": "https://github.com/TobiasGrothmann/homeassistant-terminus-battery/issues",
   "requirements": [],
   "version": "0.1.0"
 }
