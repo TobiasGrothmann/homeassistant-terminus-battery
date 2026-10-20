@@ -3,7 +3,7 @@
 Terminus authenticates server-side API calls with a JWT obtained from
 ``POST /login`` (email + password). Access tokens expire (30 minutes by
 default), so the client logs in lazily and transparently re-logs in once
-when a request is rejected with 401.
+when the token is rejected (401, or 400 with an "expired JWT" body).
 
 Only the endpoints this integration needs are implemented:
 
@@ -279,16 +279,16 @@ class TerminusClient:
     async def _request(
         self, method: str, path: str, *, json: dict[str, Any] | None = None
     ) -> Any:
-        """Perform an authenticated request, re-logging in once on 401."""
+        """Perform an authenticated request, re-logging in once on a bad token."""
         if self._token is None:
             await self.async_login()
         response = await self._raw_request(method, path, json=json)
-        if response.status == 401:
+        if await _token_rejected(response):
             LOGGER.debug("Terminus rejected the access token, logging in again")
             self._token = None
             await self.async_login()
             response = await self._raw_request(method, path, json=json)
-            if response.status == 401:
+            if await _token_rejected(response):
                 raise TerminusAuthenticationError(
                     "Terminus rejected the access token after a fresh login"
                 )
@@ -333,6 +333,19 @@ class TerminusClient:
             raise TerminusError(
                 "Terminus returned a response that is not JSON"
             ) from err
+
+
+async def _token_rejected(response: ClientResponse) -> bool:
+    """Return True when Terminus rejected the access token.
+
+    Terminus answers a missing or invalid token with 401, but an expired one
+    with 400 and ``{"error":"expired JWT access token"}``.
+    """
+    if response.status == 401:
+        return True
+    if response.status == 400:
+        return "jwt" in (await response.text()).lower()
+    return False
 
 
 def _token_from_header(response: ClientResponse) -> str | None:

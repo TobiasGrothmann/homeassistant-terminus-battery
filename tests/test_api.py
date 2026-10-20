@@ -162,6 +162,52 @@ async def test_expired_token_triggers_single_relogin() -> None:
     assert session.calls[3][2]["Authorization"] == "Bearer token-2"
 
 
+async def test_expired_jwt_400_triggers_relogin() -> None:
+    """Terminus answers an expired token with 400; that also re-logs in."""
+    client, session = make_client(
+        [
+            FakeResponse(200, LOGIN_OK),
+            FakeResponse(400, raw_text='{"error":"expired JWT access token"}'),
+            FakeResponse(200, {**LOGIN_OK, "access_token": "token-2"}),
+            FakeResponse(200, devices_payload()),
+        ]
+    )
+
+    devices = await client.async_get_devices()
+
+    assert len(devices) == 2
+    assert [call[0] for call in session.calls] == ["POST", "GET", "POST", "GET"]
+    assert session.calls[3][2]["Authorization"] == "Bearer token-2"
+
+
+async def test_expired_jwt_after_relogin_is_auth_error() -> None:
+    """An expired-token 400 right after a fresh login is an auth error."""
+    expired = '{"error":"expired JWT access token"}'
+    client, _ = make_client(
+        [
+            FakeResponse(200, LOGIN_OK),
+            FakeResponse(400, raw_text=expired),
+            FakeResponse(200, LOGIN_OK),
+            FakeResponse(400, raw_text=expired),
+        ]
+    )
+    with pytest.raises(TerminusAuthenticationError):
+        await client.async_get_devices()
+
+
+async def test_other_400_is_not_relogin() -> None:
+    """A 400 unrelated to the token is a plain error without a re-login."""
+    client, session = make_client(
+        [
+            FakeResponse(200, LOGIN_OK),
+            FakeResponse(400, raw_text='{"error":"bad request"}'),
+        ]
+    )
+    with pytest.raises(TerminusError, match="400"):
+        await client.async_get_devices()
+    assert [call[0] for call in session.calls] == ["POST", "GET"]
+
+
 async def test_relogin_still_rejected() -> None:
     """A 401 after a fresh login is an authentication error."""
     client, _ = make_client(
