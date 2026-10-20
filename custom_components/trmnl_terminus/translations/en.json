@@ -10,7 +10,7 @@
           "password": "Password"
         },
         "data_description": {
-          "url": "Base URL of the Terminus server, for example http://terminus.local:3000.",
+          "url": "Base URL of the Terminus server, for example {example_url}.",
           "username": "Email address of your Terminus user.",
           "password": "Password of your Terminus user."
         }

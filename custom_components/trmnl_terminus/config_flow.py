@@ -29,6 +29,8 @@ from .api import (
 )
 from .const import DOMAIN, LOGGER
 
+EXAMPLE_URL = "http://terminus.local:3000"
+
 STEP_USER_SCHEMA = probatio.Schema(
     {
         probatio.Required(CONF_URL): TextSelector(
@@ -78,6 +80,7 @@ class TerminusConfigFlow(ConfigFlow, domain=DOMAIN):
                 STEP_USER_SCHEMA, self._suggested_values(user_input)
             ),
             errors=errors,
+            description_placeholders={"example_url": EXAMPLE_URL},
         )
 
     async def async_step_reauth(

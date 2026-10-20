@@ -1,7 +1,12 @@
 {
   "domain": "trmnl_terminus",
   "name": "TRMNL Terminus (BYOS)",
-  "codeowners": ["@TobiasGrothmann"],
+  "categories": [
+    "productivity_information"
+  ],
+  "codeowners": [
+    "@TobiasGrothmann"
+  ],
   "config_flow": true,
   "documentation": "https://github.com/TobiasGrothmann/homeassistant-terminus-battery",
   "integration_type": "hub",
