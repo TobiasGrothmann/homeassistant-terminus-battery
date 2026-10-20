@@ -1,0 +1,21 @@
+TRMNL Terminus (BYOS) for Home Assistant
+Copyright (C) 2026 Tobias Grothmann
+
+This project is licensed under the GNU General Public License v3.0 or later
+(see LICENSE).
+
+It is an adaptation of the "trmnl" integration that ships with Home Assistant
+Core (https://github.com/home-assistant/core/tree/dev/homeassistant/components/trmnl),
+written by Joost Lekkerkerker (@joostlek) and the Home Assistant contributors
+and licensed under the Apache License, Version 2.0
+(http://www.apache.org/licenses/LICENSE-2.0). The overall structure, the
+coordinator/entity pattern, the platform setup code and the exception handler
+decorator are derived from that work. In accordance with the Apache License,
+this notice is retained; the modifications made here are licensed under the
+GPL-3.0-or-later as stated above.
+
+Terminus (https://github.com/usetrmnl/terminus, MIT, Copyright TRMNL) is the
+server this integration talks to. No Terminus code is included.
+
+The code was written with Claude Code (Anthropic) under the direction of the
+copyright holder, who reviewed and tested it.

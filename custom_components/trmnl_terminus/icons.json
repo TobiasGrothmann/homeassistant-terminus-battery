@@ -1,0 +1,40 @@
+{
+  "entity": {
+    "sensor": {
+      "last_seen": {
+        "default": "mdi:access-point-check"
+      },
+      "firmware_version": {
+        "default": "mdi:chip"
+      },
+      "wake_reason": {
+        "default": "mdi:alarm"
+      },
+      "refresh_rate": {
+        "default": "mdi:timer-refresh-outline"
+      },
+      "wake_duration": {
+        "default": "mdi:timer-outline"
+      },
+      "wifi_band": {
+        "default": "mdi:wifi"
+      }
+    },
+    "switch": {
+      "sleep_mode": {
+        "default": "mdi:sleep-off",
+        "state": {
+          "on": "mdi:sleep"
+        }
+      }
+    },
+    "time": {
+      "sleep_start": {
+        "default": "mdi:sleep"
+      },
+      "sleep_stop": {
+        "default": "mdi:sleep-off"
+      }
+    }
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connect to Terminus",
+        "description": "Enter the address of your Terminus server and the login you use for its web interface.",
+        "data": {
+          "url": "Server URL",
+          "username": "Email",
+          "password": "Password"
+        },
+        "data_description": {
+          "url": "Base URL of the Terminus server, for example http://terminus.local:3000.",
+          "username": "Email address of your Terminus user.",
+          "password": "Password of your Terminus user."
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Failed to connect",
+      "invalid_auth": "Invalid authentication",
+      "invalid_url": "Invalid server URL",
+      "unknown": "Unexpected error"
+    },
+    "abort": {
+      "already_configured": "This Terminus server is already configured",
+      "reauth_successful": "Re-authentication was successful",
+      "reconfigure_successful": "Re-configuration was successful"
+    }
+  },
+  "entity": {
+    "sensor": {
+      "battery_voltage": {
+        "name": "Battery voltage"
+      },
+      "wifi_band": {
+        "name": "Wi-Fi band"
+      },
+      "last_seen": {
+        "name": "Last seen"
+      },
+      "firmware_version": {
+        "name": "Firmware version"
+      },
+      "wake_reason": {
+        "name": "Wake reason"
+      },
+      "refresh_rate": {
+        "name": "Refresh rate"
+      },
+      "wake_duration": {
+        "name": "Wake duration"
+      }
+    },
+    "switch": {
+      "sleep_mode": {
+        "name": "Sleep mode"
+      }
+    },
+    "time": {
+      "sleep_start": {
+        "name": "Sleep start time"
+      },
+      "sleep_stop": {
+        "name": "Sleep end time"
+      }
+    }
+  },
+  "exceptions": {
+    "action_error": {
+      "message": "An error occurred while communicating with Terminus: {error}"
+    },
+    "authentication_error": {
+      "message": "Authentication failed. Please check the Terminus login and password."
+    },
+    "update_error": {
+      "message": "An error occurred while communicating with Terminus: {error}"
+    }
+  }
+}

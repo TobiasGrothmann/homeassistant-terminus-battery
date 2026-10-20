@@ -1,0 +1,38 @@
+{
+  "data": [
+    {
+      "default_palette_id": 1,
+      "id": 1,
+      "name": "v2",
+      "label": "TRMNL X",
+      "description": "TRMNL X",
+      "kind": "trmnl",
+      "mime_type": "image/png",
+      "colors": 16,
+      "bit_depth": 4,
+      "rotation": 0,
+      "offset_x": 0,
+      "offset_y": 0,
+      "scale_factor": 1.8,
+      "width": 1872,
+      "height": 1404
+    },
+    {
+      "default_palette_id": 1,
+      "id": 2,
+      "name": "og_png",
+      "label": "TRMNL OG (1-bit)",
+      "description": "TRMNL OG",
+      "kind": "trmnl",
+      "mime_type": "image/png",
+      "colors": 2,
+      "bit_depth": 1,
+      "rotation": 0,
+      "offset_x": 0,
+      "offset_y": 0,
+      "scale_factor": 1.0,
+      "width": 800,
+      "height": 480
+    }
+  ]
+}
