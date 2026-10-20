@@ -79,6 +79,8 @@ uv pip install --python .venv/bin/python \
 
 - `scripts/deploy.sh` copies the integration to a Home Assistant OS box over
   SSH (*Terminal & SSH* add-on) and restarts Core.
+- `scripts/release.sh 0.1.1` bumps the version, pushes, waits for the
+  Validate workflow and publishes the GitHub release that HACS picks up.
 - Terminus API used: `POST /login`, `GET /api/devices`, `GET /api/models`,
   `PATCH /api/devices/:id`.
 
